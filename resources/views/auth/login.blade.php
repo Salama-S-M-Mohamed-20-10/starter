@@ -7,23 +7,41 @@
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div><!-- it is translate the login to the language you in -->
 
-                <div class="card-body">
+                {{--<div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf <!-- it must be sent with any route with method post in the file web -->
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
+                            <label for="identify" class="col-md-4 col-form-label text-md-right">Email Or Mobile</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="identify" type="text" class="form-control @error('identify') is-invalid @enderror" name="identify" value="{{ old('identify') }}" required>
 
-                                @error('email')
+
+                                @error('identify')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div>--}}
+
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-4 col-form-label text-md-right"> name Or mobile</label>
+
+                                    <div class="col-md-6">
+                                        <input id="identify" type="text" class="form-control @error('identify') is-invalid @enderror" name="identify" value="{{ old('identify') }}" required>
+
+                                        @error('identify')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>

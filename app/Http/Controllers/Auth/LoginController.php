@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use function PHPSTORM_META\type;
+
 class LoginController extends Controller
 {
     /*
@@ -40,6 +42,27 @@ class LoginController extends Controller
 
     public function username()
     {
-        return 'email';
+        // return 'email';
+        /*$value = request()->input('identify');
+
+        $field = filter_var($value,FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
+
+        if($field != 'email' && $field != 'mobile') {
+            $field = 'name';
+        }
+
+        request()->merge([$field =>$value]);
+
+        return $field;*/
+
+        //return 'name';
+
+        $value = request()->input('identify'); // ahmed.emam.dev@gmail  or 293293923293
+        $field = filter_var($value, FILTER_SANITIZE_STRING) ? 'name' : 'mobile';
+        if($field != 'name' && $field != 'mobile') {
+            return 'email';
+        }
+        request()->merge([$field =>$value ]);
+        return  $field;
     }
 }
