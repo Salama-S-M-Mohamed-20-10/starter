@@ -120,7 +120,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Add Your Offer
+                    {{__('messages.Add your offer')}}
                 </div>
 
 
@@ -134,27 +134,41 @@
                     @csrf
                     {{--<input type="text" name="_token" value="{{csrf_token()}}" id="">--}}
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Offer Name</label>
-                      <input type="text" class="form-control" name="name" placeholder="Enter email">
-                      @error('name')
+                      <label for="exampleInputEmail1">{{__('messages.Offer Name ar')}}</label>
+                      <input type="text" class="form-control" name="name_ar" placeholder="{{__('messages.Offer Name ar')}}">
+                      @error('name_ar')
                           <small class="form-text text-danger">{{$message}}</small>
                       @enderror
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Offer Price</label>
-                      <input type="text" class="form-control" name="price" placeholder="Price">
+                        <label for="exampleInputEmail1">{{__('messages.Offer Name en')}}</label>
+                        <input type="text" class="form-control" name="name_en" placeholder="{{__('messages.Offer Name en')}}">
+                        @error('name_en')
+                            <small class="form-text text-danger">{{$message}}</small>
+                        @enderror
+                      </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">{{__('messages.Offer Price')}}</label>
+                      <input type="text" class="form-control" name="price" placeholder="{{__('messages.Offer Price')}}">
                       @error('price')
                           <small class="form-text text-danger">{{$message}}</small>
                       @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Offer Details</label>
-                        <input type="text" class="form-control" name="details" placeholder="Details">
-                        @error('details')
+                        <label for="exampleInputPassword1">{{__('messages.Offer Details ar')}}</label>
+                        <input type="text" class="form-control" name="details_ar" placeholder="{{__('messages.Offer Details ar')}}">
+                        @error('details_ar')
                           <small class="form-text text-danger">{{$message}}</small>
                         @enderror
                       </div>
-                    <button type="submit" class="btn btn-primary">Save Offer</button>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">{{__('messages.Offer Details en')}}</label>
+                        <input type="text" class="form-control" name="details_en" placeholder="{{__('messages.Offer Details en')}}">
+                        @error('details_en')
+                          <small class="form-text text-danger">{{$message}}</small>
+                        @enderror
+                      </div>
+                    <button type="submit" class="btn btn-primary">{{__('messages.Save Offer')}}</button>
                   </form>
 
             </div>

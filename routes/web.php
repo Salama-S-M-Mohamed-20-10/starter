@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route; // For No Showing error in route
 use Illuminate\Support\Facades\Auth;  // For No Showing error in auth
+//use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+//use LaravelLocalization;
+//use LaravelLocalization;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +40,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         Route::group(['prefix' => 'offers'], function () {
             //Route::get('store', 'CrudController@store');
             Route::get('create', 'CrudController@create');
+            Route::get('all', 'CrudController@getAllOffers')->name('offers.all');
             Route::post('store', 'CrudController@store') -> name('offers.store');
         });
 });

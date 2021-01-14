@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+//use LaravelLocalization;
+//use Mcamara\LaravelLocalization\LaravelLocalization;
 
+//use Mcamara\LaravelLocalization\LaravelLocalization;
+//use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+//use LaravelLocalization;
+//use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use LaravelLocalization;
 class CrudController extends Controller
 {
     /**
@@ -34,27 +42,29 @@ class CrudController extends Controller
         return view('offers.create');
     }
 
-    public function store(Request $request){
+    public function store(OfferRequest $request){
         // validate data before insert in database
         // validator class that make validation in laravel
-        $rules = $this -> getRules();
+        /*$rules = $this -> getRules();
         $messages = $this -> getMessages();
         $validator = Validator::make($request->all(),$rules , $messages); // it take one or two or three array and $request->all() to convert to array
         if($validator -> fails()){
             return redirect()->back()->withErrors($validator)->withInputs($request->all());
-        }
+        }*/
 
         //insert
         Offer::create([
-            'name' => $request -> name,
+            'name_ar' => $request -> name_ar,
+            'name_en' => $request -> name_en,
             'price' => $request -> price,
-            'details' => $request -> details,
+            'details_ar' => $request -> details_ar,
+            'details_en' => $request -> details_en,
         ]);
 
         return redirect()->back()->with(['success' => 'تم اضافة العرض بنجاح']);
     }
 
-    protected function getMessages() {
+    /*protected function getMessages() {
         return $messages = [
             'name.required' => trans('messages.offer name required'), // __ equal to trans
             'name.unique' => __('messages.offer name must be unique'),
@@ -70,6 +80,14 @@ class CrudController extends Controller
             'price' => 'required|numeric',
             'details' => 'required',
         ];
+    }*/
+
+    public function getAllOffers(){
+        $offers = Offer::select('id','price',
+        'name_'.LaravelLocalization::getCurrentLocale().' as name',
+        'details_'.LaravelLocalization::getCurrentLocale() . ' as details'
+        ) -> get(); // return collection
+        return view('offers.all',compact('offers'));
     }
 
 }
