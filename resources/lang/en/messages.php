@@ -14,6 +14,11 @@ return [
     */
 
     "hello gus" => 'Hello Gus',
-    "welcome"   => 'WELCOME'
+    "welcome"   => 'WELCOME',
+    "offer name required" => 'Offer Name Required',
+    "offer name must be unique" => 'Offer Name Must Be Unique',
+    "offer price must be numiric" => 'Offer Must Be Numeric',
+    "offer price required" => 'Offer Required',
+    "offer details required" => 'Offer Details Required'
 
 ];
