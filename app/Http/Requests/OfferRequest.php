@@ -35,12 +35,15 @@ class OfferRequest extends FormRequest
     public function messages() // it is used in laravel we make override in code of laravel that is default
     {
         return [
-            'name.required' => trans('messages.offer name required'), // __ equal to trans
-            'name.unique' => __('messages.offer name must be unique'),
+            'name_ar.required' => trans('messages.offer name required'), // __ equal to trans
+            'name_en.required' => trans('messages.offer name required'),
+            'name_ar.unique' => __('messages.offer name must be unique'),
+            'name_en.unique' => __('messages.offer name must be unique'),
             //'name.max:100' => __('message.name max is 100'),
             'price.numeric' => __('messages.offer price must be numiric'),
             'price.required' => __('messages.offer price required'),
-            'details.required' => __('messages.offer details required'),
+            'details_ar.required' => __('messages.offer details required'),
+            'details_en.required' => __('messages.offer details required'),
         ];
     }
 

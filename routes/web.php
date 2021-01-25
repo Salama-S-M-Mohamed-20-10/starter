@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CrudController;
 use Illuminate\Support\Facades\Route; // For No Showing error in route
 use Illuminate\Support\Facades\Auth;  // For No Showing error in auth
 //use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -26,8 +27,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return 'dashboard';
-});
+    return 'Not Adult';
+})->name('not.adult');
 
 Route::get('/redirect/{service}', 'SocialController@redirect');
 
@@ -40,10 +41,39 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         Route::group(['prefix' => 'offers'], function () {
             //Route::get('store', 'CrudController@store');
             Route::get('create', 'CrudController@create');
-            Route::get('all', 'CrudController@getAllOffers')->name('offers.all');
             Route::post('store', 'CrudController@store') -> name('offers.store');
+
+            Route::get('edit/{offer_id}', 'CrudController@editOffer');
+            Route::post('update/{offer_id}', 'CrudController@updateOffer') -> name('offers.update');
+            Route::get('delete/{offer_id}', 'CrudController@delete') -> name('offers.delete');
+            Route::get('all', 'CrudController@getAllOffers')->name('offers.all');
         });
+
+        Route::get('youtube', 'CrudController@getVideo') -> middleware('auth:web');
 });
 
 
 
+###################### Begin Ajax Routes ########################
+Route::group(['prefix' => 'ajax-offers'],function(){
+     Route::get('create', 'OfferController@create');
+     Route::post('store', 'OfferController@store') -> name('ajax.offers.store');
+
+     Route::get('all', 'OfferController@all') -> name('ajax.offers.all');
+     Route::post('delete','OfferController@delete') -> name('ajax.offers.delete');
+     Route::get('edit/{offer_id}', 'OfferController@edit')->name('ajax.offers.edit');
+     Route::post('update', 'OfferController@update') -> name('ajax.offers.update');
+});
+###################### End Ajax Routes ##########################
+
+###################### Begin Authentication And Guards #############
+Route::group(['middleware' => 'CheckAge','namespace' => 'Auth'], function () {
+    Route::get('adults','CustomAuthController@adualt')-> name('adult');
+});
+
+Route::get('site','Auth\CustomAuthController@site') -> middleware('auth:web')-> name('site');
+Route::get('admin','Auth\CustomAuthController@admin') -> middleware('auth:admin')-> name('admin');
+
+Route::get('admin/login','Auth\CustomAuthController@adminLogin') -> name('admin.login');
+Route::post('admin/login','Auth\CustomAuthController@checkAdminLogin') -> name('save.admin.login');
+###################### End Authentication And Guards #############

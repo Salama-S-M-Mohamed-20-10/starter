@@ -29,6 +29,12 @@ return [
     "Offer Details en" => 'تفاصيل العرض بالانجليزي',
     "Save Offer" => 'حفظ',
     "Offer Name" => 'أسم العرض',
-    "Offer Details" => 'تفاصيل العرض'
+    "Offer Details" => 'تفاصيل العرض',
+    "operation" => 'العمليات',
+    "update" => 'تعديل',
+    "update your offer" => 'تعديل العرض',
+    "delete" => 'حذف',
+    "offer not exist" => 'العرض غير موجود',
+    "offer deleted successfully" => 'تم حذف العرض بنجاح'
 
 ];

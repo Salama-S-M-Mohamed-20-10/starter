@@ -25,9 +25,9 @@ Route::get('/show-number/{id}', function ($id) {
     return $id;
 })->name("a");*/
 
-Route::get('/admin', function () {
+/*Route::get('/admin', function () {
     return 'Hello Admin';
-});
+});*/
 
 // route name
 

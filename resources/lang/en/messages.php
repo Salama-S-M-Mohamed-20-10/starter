@@ -29,6 +29,12 @@ return [
     "Offer Details en" => 'English Offer Details',
     "Save Offer" => 'Save',
     "Offer Name" => 'Offer Name',
-    "Offer Details" => 'Offer Details'
+    "Offer Details" => 'Offer Details',
+    "operation" => 'Operation',
+    "update" => 'Update',
+    "update your offer" => "Update your offer",
+    "delete" => 'delete',
+    "offer not exist" => 'Offer Not Exist',
+    "offer deleted successfully" => 'Offer Deleted Successfully'
 
 ];
